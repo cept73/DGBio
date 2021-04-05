@@ -1,140 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-	
-	<!--- Hash value catcher
-    ================================================== -->
-    <script>
-    var target = location.hash
-	
-    if (['#ecosystem', '#jared', '#developers', '#foundation', '#dgbat', '#wiki', '#telegram', '#socialmedia', '#digiassetservices', '#dgbcore', '#dgbmobile', '#dgbgo', '#docs', '#contribute', '#history', '#digidservices'].indexOf(target) >= 0)
-    
-       window.addEventListener("load", function(){
-		 setTimeout(function(){
-           window.scrollTo(0, $(target).offset().top -100);
-		 }, 1000);
-       });
-		
-	else if (target.length > 0)
-    
-       window.addEventListener("load", function(){
-		 setTimeout(function(){
-           window.scrollTo(0, $(target).offset().top);
-		 }, 1000);
-       });
-		
-    else
-    null
-    </script>
-	
-	<!--- Language router
-    ================================================== -->
-	<script>
-	var langvalue = location.search.substring(1);
-    var browserlang = navigator.language || navigator.userLanguage;
-	var langcode5 = browserlang.substr(0,5);
-	var langcode3 = browserlang.substr(0,3);
-	var langcode2 = browserlang.substr(0,2);
-		
-	if (langvalue == "lang=en") null
-
-	else if (langcode3 == "fil")
-	window.location.replace('fil/'+target)
-		
-    else if (['nb', 'no', 'nn'].indexOf(langcode2) >= 0)
-	window.location.replace('nb/'+target)
-		
-	else if (['hr', 'sr', 'bs'].indexOf(langcode2) >= 0)
-	window.location.replace('hr/'+target)
-		
-	else if (['cs', 'sk'].indexOf(langcode2) >= 0)
-	window.location.replace('cs/'+target)
-		
-	else if (['af', 'da', 'de', 'es', 'fr', 'id', 'it', 'sw', 'hu', 'ms', 'nl', 'pl', 'pt', 'ro', 'sq', 'sl', 'fi', 'sv', 'vi', 'tr', 'ru', 'bg', 'el', 'hi', 'th', 'ja', 'ko', 'zh', 'ar', 'fa'].indexOf(langcode2) >= 0)
-			
-	window.location.replace(langcode2+'/'+target)
-		
-	else {
-	fetch('https://ipinfo.io/json?token=d0930e5241b7f2')
-    .then((response) => {
-    return response.json()
-    })
-		
-	  .then((data) => {
-        if (data.country == "US")
-	    window.location.replace('en-us/'+target)
-		
-	    else if (data.country == "GB")
-	    window.location.replace('en-gb/'+target)
-		
-	    else if (data.country == "CA")
-	    window.location.replace('en-ca/'+target)
-		
-	    else if (data.country == "AU")
-	    window.location.replace('en-au/'+target)
-		
-	    else if (data.country == "NZ")
-	    window.location.replace('en-nz/'+target)
-		
-	    else if (data.country == "BR")
-	    window.location.replace('pt-br/'+target)
-		
-		else if (data.country == "IN")
-	    window.location.replace('en-in/'+target)
-		
-		else if (data.country == "NG")
-	    window.location.replace('en-ng/'+target)
-		
-		else if (['KE', 'TZ', 'CD', 'RW', 'UG'].indexOf(data.country) >= 0)
-	    window.location.replace('sw/'+target)
-		
-		else if (data.country == "VN")
-	    window.location.replace('vi/'+target)
-		
-		else if (data.country == "MY")
-	    window.location.replace('ms/'+target)
-		
-		else if (data.country == "ID")
-	    window.location.replace('id/'+target)
-      })
-		
-      .catch((err) => {
-	    if (langcode5 == "en-US")
-	    window.location.replace('en-us/'+target)
-		
-	    else if (langcode5 == "en-GB")
-	    window.location.replace('en-gb/'+target)
-		
-        else if (langcode5 == "en-CA")
-	    window.location.replace('en-ca/'+target)
-		
-	    else if (langcode5 == "en-AU")
-	    window.location.replace('en-au/'+target)
-		
-	    else if (langcode5 == "en-NZ")
-	    window.location.replace('en-nz/'+target)
-		
-	    else if (langcode5 == "pt-BR")
-	    window.location.replace('pt-br/'+target)
-		
-		else if (langcode5 == "en-IN")
-	    window.location.replace('en-in/'+target)
-		
-		else if (langcode5 == "en-NG")
-	    window.location.replace('en-ng/'+target)
-	  })
-	}
-	</script>
-	
-	<!--- Google analytics
-    ================================================== -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129492671-3"></script>
-    <script>
-       window.dataLayer = window.dataLayer || [];
-       function gtag(){dataLayer.push(arguments);}
-       gtag('js', new Date());
-       gtag('config', 'UA-129492671-3', { 'anonymize_ip': true });
-    </script>
+    <script src="js/detectLanguage.js"></script>
 
     <!--- Basic page needs
     ================================================== -->
@@ -154,11 +21,16 @@
     <link rel="stylesheet" href="css/vendor1g.css">
     <link rel="stylesheet" href="css/main3p.css">
 
-    <!-- Scripts
+    <!--- Google analytics
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
-	
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129492671-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-129492671-3', { 'anonymize_ip': true });
+    </script>
+
 	<!-- RSS Feed
     ================================================== -->
     <link rel="alternate" type="application/rss+xml" title="DigiByte core protocol updates" href="https://github.com/digibyte-core/digibyte/releases.atom" />
@@ -273,11 +145,11 @@
                 <div class="home-content__left">
                     <h1>
                     More secure, Faster,<br/>
-                    Forward thinking.
+                    Forward thinking
                     </h1>
     
                     <h3>
-                    DigiByte is more than a faster digital currency. It is an innovative blockchain that can be used for digital assets, smart contracts, decentralized applications and secure authentication.
+                    DigiByte is more than a faster digital currency. It is an innovative blockchain that can be used for digital assets, smart contracts, decentralized applications and secure authentication
                     </h3>
     
                     <div class="home-content__btn-wrap">
@@ -340,7 +212,7 @@
             <div class="col-full slick-slider about-desc__slider">
 
                 <div class="about-desc__slide">
-                    <h3 class="item-title">Truly decentralized.</h3>
+                    <h3 class="item-title">Truly decentralized</h3>
 
                     <p>
                     DigiByte has never been funded through an <a href="https://wikipedia.org/wiki/Initial_coin_offering" target="_blank">ICO</a> or significant amount of <a href="https://www.dgbwiki.com/index.php?title=DigiByte_History#The_Launch" target="_blank">premined coins</a>. There is no CEO or a company controlling the DigiByte blockchain. It is a volunteer based and global community driven project.
@@ -348,7 +220,7 @@
                 </div>
 
                 <div class="about-desc__slide">
-                    <h3 class="item-title">More secure.</h3>
+                    <h3 class="item-title">More secure</h3>
 
                     <p>
 					DigiByte uses 5 cryptographic algorithms and <a href="https://www.dgbwiki.com/index.php?title=DigiShield" target="_blank">real time difficulty adjustment</a> to prevent malicious mining centralization and hash power fluctuation. One of which is Odocrypt that changes itself every 10 days for ASIC resistance.
@@ -356,7 +228,7 @@
                 </div>
 
                 <div class="about-desc__slide">
-                    <h3 class="item-title">Much faster.</h3>
+                    <h3 class="item-title">Much faster</h3>
 
                     <p>
                     DigiByte blocks occur every 15 seconds which is 40x faster than Bitcoin and 10x faster than Litecoin. Early <a href="https://wikipedia.org/wiki/SegWit" target="_blank">SegWit</a> implementation and blockchain rigidity enable up to <a href="https://www.dgbwiki.com/index.php?title=DigiSpeed" target="_blank">1066</a> on-chain transactions per second with negligible fees.
@@ -364,7 +236,7 @@
                 </div>
 
                 <div class="about-desc__slide">
-                    <h3 class="item-title">Forward thinking.</h3>
+                    <h3 class="item-title">Forward thinking</h3>
 
                     <p>
                     Over the past 7 years, DigiByte has repeatedly set itself apart with multiple blockchain firsts, such as <a href="https://www.dgbwiki.com/index.php?title=DigiShield" target="_blank">DigiShield</a> guard, <a href="https://www.dgbwiki.com/index.php?title=MultiAlgo" target="_blank">MultiAlgo</a> mining, <a href="https://www.dgbwiki.com/index.php?title=DigiSync" target="_blank">SegWit</a> implementation, <a href="https://www.dgbwiki.com/index.php?title=Odocrypt" target="_blank">Odocrypt</a> algorithm, <a href="https://www.dgbwiki.com/index.php?title=Dandelion%2B%2B" target="_blank">Dandelion++</a> privacy protocol, <a href="#digiassets" class="smoothscroll">DigiAssets</a> and <a href="#digi-id" class="smoothscroll">Digi-ID</a>.
@@ -413,7 +285,7 @@
 		<div class="section-header align-center has-bottom-sep" data-aos="fade-up">
             <div class="col-full">
                 <h1 class="display-1">
-                    This is how the DigiByte blockchain works.
+                    This is how the DigiByte blockchain works
                 </h1>
                 <p class="lead">
                     The three layers are the most innovative parts of the DigiByte blockchain providing the network infrastructure, security and communications to function with cutting edge speed.
@@ -425,26 +297,26 @@
                 <div class="process__steps block-1-2 block-tab-full group">
 
                     <div class="col-block step">
-                        <h3 class="item-title">Applications / DigiAssets.</h3>
+                        <h3 class="item-title">Applications / DigiAssets</h3>
                         <p>The top layer is like an app store with clear real-world uses. All types of digital assets can be created with the <a href="#digiassets" class="smoothscroll">DigiAssets</a> protocol on top of the DigiByte blockchain. Decentralized applications (dApps) can be built on top of the DigiByte blockchain. Also smart contracts that leverage the rigidity and security of the DigiByte blockchain can be encoded easily.
                         </p> 
                     </div>
 
                     <div class="col-block step">
-                        <h3 class="item-title">Digital asset / Public ledger.</h3>
+                        <h3 class="item-title">Digital asset / Public ledger</h3>
                         <p>The middle layer provides security and administration. A <strong>Digi</strong>tal <strong>Byte</strong> of data, a representation of larger data or a unit that holds value, and cannot be counterfeited, duplicated or hacked. An immutable public ledger where all transactions of DigiBytes are recorded. DigiByte uses <a href="https://www.dgbwiki.com/index.php?title=DigiByte_Mining_Breakdown" target="_blank">five proof of work algorithms</a> for security. New DigiBytes come from mining only.
                         </p> 
                     </div>
                
                     <div class="col-block step">
-                        <h3 class="item-title">Core protocol / Global network.</h3>
+                        <h3 class="item-title">Core protocol / Global network</h3>
                         <p>The bottom layer provides communication and operating procedures. A very low-level way nodes on the DigiByte global network communicate. Thousands of people are running DigiByte software all across the planet. Any server, computer, tablet or mobile phone connected to the DigiByte network becomes a node that helps relay transactions.
 			            <a href="https://www.dgbwiki.com/index.php?title=Port_forwarding_process_for_your_DigiByte_node" target="_blank">Start contributing to the DigiByte blockchain in the optimal way</a>.
 			            </p>
 		            </div>
 					
 					<div class="col-block step">
-                        <h3 class="item-title">Open source / Permissionless.</h3>
+                        <h3 class="item-title">Open source / Permissionless</h3>
                         <p>Just like <a href="https://github.com/DigiByte-Core/DGBio" target="_blank">this website</a>, the DigiByte blockchain is completely open source and free to use released under the <a href="https://opensource.org/licenses/mit-license.php" target="_blank">MIT license</a>, which gives you the power to run and modify the software. Transparency allows for independent verification of binaries and their corresponding source code.<br />
 						<a href="https://github.com/DigiByte-Core/digibyte" target="_blank">DigiByte Protocol on GitHub</a>.
 						<br />
@@ -483,7 +355,7 @@
 
             <div class="row">
                 <div class="col-full testimonials-header">
-                    <h2 class="display-2">The history of DigiByte.</h2>
+                    <h2 class="display-2">The history of DigiByte</h2>
 					<p class="lead">
                     Discover major development milestones of the DigiByte blockchain.
                     </p>
@@ -496,7 +368,7 @@
 
                     <div class="testimonials__slide">
                         <img src="images/avatars/development.png" loading="lazy" width="72" height="72" alt="Development" class="testimonials__avatar">
-                        
+
                         <p>Full-time development has been started to build the future of the DigiByte blockchain.</p>
 
                         <div class="testimonials__author">
@@ -648,7 +520,7 @@
         <div class="row section-header has-bottom-sep" data-aos="fade-up">
             <div class="col-full">
                 <h1 class="display-1">
-                    A digital currency<br/>you would absolutely love.
+                    A digital currency<br/>you would absolutely love
                 </h1>
                 <p class="lead">
                     DigiByte (DGB) is a highly scalable peer-to-peer digital currency that enables industry-leading transaction speeds with negligible fees. DigiByte is the best means of making digital payments.
@@ -664,7 +536,7 @@
                     <i class="fas fa-phone-laptop"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Easy to use.</h3>
+                    <h3 class="item-title">Easy to use</h3>
                     <p>Getting started to use DigiByte is even easier than sending an SMS. You can send and receive DigiBytes using the devices you already know and love. All you need is installing a <a class="smoothscroll" href="#downloads">DigiByte supported wallet</a> then click scan, scan the QR code and send DigiByte. As easy as 1..2..3.
                     </p>
                 </div>
@@ -675,7 +547,7 @@
                     <i class="fas fa-thumbs-up"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Not an ICO.</h3>
+                    <h3 class="item-title">Not an ICO</h3>
                     <p>DigiByte has never been funded through an <a href="https://wikipedia.org/wiki/Initial_coin_offering" target="_blank">ICO</a> or significant amount of premined coins (<a href="https://www.dgbwiki.com/index.php?title=DigiByte_History#The_Launch" target="_blank">0% remaining</a>). There is no CEO or a company controlling the DigiByte blockchain. <a class="smoothscrollup" href="#jared">The founder</a>, <a class="smoothscrollup" href="#developers">developers</a> and the <a class="smoothscroll" href="#community">community</a> are unpaid volunteers that eliminate the bankrupt risk.
                     </p>
                 </div>
@@ -684,7 +556,7 @@
                     <i class="fas fa-tachometer-alt-fastest"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Much faster.</h3>
+                    <h3 class="item-title">Much faster</h3>
                     <p>DigiByte transactions are confirmed in approx. 15 seconds, which is 40 times faster than Bitcoin and 10 times faster than Litecoin. <a href="https://wikipedia.org/wiki/SegWit" target="_blank">SegWit</a> enables up to <a href="https://www.dgbwiki.com/index.php?title=DigiSpeed" target="_blank">1066</a> on-chain transactions per second and negligible fees make DigiByte the ideal currency for daily payments.
                     </p>
                 </div>
@@ -695,7 +567,7 @@
                     <i class="fas fa-shield-alt"></i>
                 </div>    
                 <div class="item-feature__text">
-                    <h3 class="item-title">Always secure.</h3>
+                    <h3 class="item-title">Always secure</h3>
                     <p>DigiByte has been built on the uncrackable technology of the Bitcoin blockchain and implemented various advanced enhancements over it such as <a href="https://www.dgbwiki.com/index.php?title=DigiShield" target="_blank">DigiShield</a> guard, <a href="https://www.dgbwiki.com/index.php?title=MultiAlgo" target="_blank">MultiAlgo</a> mining and the <a href="https://www.dgbwiki.com/index.php?title=Odocrypt" target="_blank">Odocrypt</a> algorithm. Also <a href="https://www.dgbwiki.com/index.php?title=Dandelion%2B%2B" target="_blank">Dandelion++</a> privacy protocol helps keep you safe by hiding your IP and physical location. <a href="https://www.dgbwiki.com/index.php?title=What_makes_DigiByte_More_Secure%3F" target="_blank">Learn more</a>.
                     </p>
                 </div>
@@ -706,7 +578,7 @@
                     <i class="fas fa-digging"></i>
                 </div> 
                 <div class="item-feature__text">
-                    <h3 class="item-title">Mineable.</h3>
+                    <h3 class="item-title">Mineable</h3>
                     <p>DigiByte is a 100% <a href="https://wikipedia.org/wiki/Proof_of_work" target="_blank">Proof of Work</a> (PoW) blockchain that can be mined with five algorithms called Sha256, Scrypt, Skein, Qubit and Odocrypt. <a href="https://www.dgbwiki.com/index.php?title=MultiAlgo" target="_blank">MultiAlgo</a> mining contributes to decentralization, security of the network and gives you the freedom to use different kind of hardware's such as an ASIC a FPGA or a GPU. <a href="https://www.dgbwiki.com/index.php?title=DigiByte#DigiByte_Mining" target="_blank">Learn more</a>.
                     </p>
                 </div>
@@ -717,7 +589,7 @@
                     <i class="fas fa-coins"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Manageable units.</h3>
+                    <h3 class="item-title">Manageable units</h3>
                     <p>Compared to 21 million Bitcoin, 21 billion DigiByte (1000:1 ratio to BTC) have been designed to be ready for mass adoption. DigiByte block rewards reduces by 1% every month instead of halving every 4 years. All 21 billion DigiByte will be mined by the year 2035. After 2035 the miners will then rely on transaction fees alone. <a href="https://www.dgbwiki.com/index.php?title=Why_so_many_coins%3F_21Billion" target="_blank">Learn more</a>.
                     </p>
                 </div>
@@ -729,7 +601,7 @@
 
             <div class="row">
                 <div class="col-full testimonials-header">
-                    <h2 class="display-2">Quick picks from the DigiByte Ecosystem.</h2>
+                    <h2 class="display-2">Quick picks from the DigiByte Ecosystem</h2>
 					<p class="lead">
                     All exchanges and services that support DigiByte can be found on the <a href="https://www.dgbwiki.com/index.php?title=DigiByte#DigiByte_Ecosystem" target="_blank">DigiByte Wiki</a>.
                     </p>
@@ -891,7 +763,7 @@
                     <i class="fas fa-photo-video"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Limitless possibilities.</h3>
+                    <h3 class="item-title">Limitless possibilities</h3>
                     <p>DigiAssets can be used to securely represent anything we find in the physical world. From tangible assets such as real estate or cars, through to scarce digital pieces of art. Signed documents such as deeds and medical bills can be protected.
                     </p>
                 </div>
@@ -902,7 +774,7 @@
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Growing confidently.</h3>
+                    <h3 class="item-title">Growing confidently</h3>
                     <p>DigiAssets as an ecosystem and platform already has interested parties either planning on or currently building platforms in real estate, finance, remittance, identity, point of sale, racing, trade, healthcare, supply chain, government and more.
                     </p>
                 </div>
@@ -913,7 +785,7 @@
                     <i class="fas fa-badge-check"></i>
                 </div>  
                 <div class="item-feature__text">
-                    <h3 class="item-title">Solid technology.</h3>
+                    <h3 class="item-title">Solid technology</h3>
                     <p>DigiAssets leverages unique aspects of a truly decentralized blockchain only found within a permissionless blockchain like DigiByte. This allows DigiAssets to be more secure, scalable and decentralized than any other platform in the market.
                     </p>
                 </div>
@@ -923,25 +795,25 @@
 		
 		<div class="lrmargin25" data-aos="fade">
 			
-		   <h1 align="center">Get started with DigiAssets.</h1>
+		   <h1 align="center">Get started with DigiAssets</h1>
 			
 		   <div class="process">
                 <div class="process__steps block-1-2 block-tab-full group">
 
                     <div class="col-block step">
-                        <h3 class="item-title">Learn the protocol.</h3>
+                        <h3 class="item-title">Learn the protocol</h3>
                         <p>Discover the open-source DigiAssets protocol specifications for detailed information about issuing and transacting digital assets on top of the DigiByte Blockchain. <a href="https://github.com/DigiByte-Core/DigiAssets-Protocol-Specifications/wiki" target="_blank">DigiAssets Protocol on GitHub</a>.
                         </p> 
                     </div>
 
                     <div class="col-block step">
-                        <h3 class="item-title">Issue an asset.</h3>
+                        <h3 class="item-title">Issue an asset</h3>
                         <p>Not a developer? Definitely not a problem! Anyone can easily issue a DigiAsset by using one of the tools available without having technical knowledge about the protocol. <a class="smoothscrollup" href="#digiassetservices">DigiAssets supported services</a>.
                         </p> 
                     </div>
                
                     <div class="col-block step">
-                        <h3 class="item-title">Store / Trade.</h3>
+                        <h3 class="item-title">Store / Trade</h3>
                         <p>Wondering how to use DigiAssets? Use the <a class="smoothscrollup" href="#dgbmobile">DigiByte Mobile</a> and <a class="smoothscrollup" href="#dgbgo">DigiByte Go</a> apps to send, accept and store your assets or explore the <a class="smoothscrollup" href="#digiassetservices">DigiAssets supported services</a> to buy, sell and swap DigiAssets.
                         </p> 
                     </div>
@@ -960,7 +832,7 @@
 	    
 	      <div class="row">
                 <div class="col-full testimonials-header">
-                    <h2 class="display-2">See DigiAssets in action.</h2>
+                    <h2 class="display-2">See DigiAssets in action</h2>
 					<p class="lead">
                     Discover DigiAssets supported services to experience DigiAssets.
                     </p>
@@ -1034,8 +906,8 @@
                     <i class="fas fa-sign-in-alt"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Easy authentication.</h3>
-                    <p>Digi-ID eliminates the username, password and 2fa requirements for authentication. Because Digi-ID uses public / private key cryptography, there are no passwords or usernames at risk. This method not only protects the consumer, it also protects the services that the consumer uses.
+                    <h3 class="item-title">Easy authentication</h3>
+                    <p>Digi-ID eliminates the username, password and 2fa requirements for authentication. Because Digi-ID uses public / private key cryptography, there are no passwords or usernames at risk. This method not only protects the consumer, it also protects the services that the consumer uses
                     </p>
                 </div>
             </div>
@@ -1045,7 +917,7 @@
                     <i class="fas fa-user-shield"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Flawless security.</h3>
+                    <h3 class="item-title">Flawless security</h3>
                     <p>Digi-ID does not store any data about its users on the DigiByte blockchain. This further strengthens the security while also bolstering end-user’s confidence that their data is neither tracked nor at risk by others negligence. There is no external point of failure for an hacker to exploit your platform.</p>
                 </div>
             </div>
@@ -1055,7 +927,7 @@
                     <i class="fas fa-smile-plus"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Simple and free.</h3>
+                    <h3 class="item-title">Simple and free</h3>
                     <p>Digi-ID is completely free! There are no fees, subscription services, or maintenance costs. But the cost is its second best feature. Its primary feature is that, in accordance with DigiBytes security prioritization, Digi-ID is a more secure, yet simple method available to log in to websites, apps and more.
                     </p>
                 </div>
@@ -1065,31 +937,31 @@
 		
 		<div class="lrmargin25" data-aos="fade">
 			
-		   <h1 align="center">It works like this.</h1>
+		   <h1 align="center">It works like this</h1>
 			
 		   <div class="process">
                 <div class="process__steps block-1-2 block-tab-full group">
 
                     <div class="col-block step">
-                        <h3 class="item-title">Generation.</h3>
+                        <h3 class="item-title">Generation</h3>
                         <p>The website, application or product generates a unique Digi-ID QR code and presents it.
                         </p> 
                     </div>
 
                     <div class="col-block step">
-                        <h3 class="item-title">Scanning.</h3>
+                        <h3 class="item-title">Scanning</h3>
                         <p>The user scans the QR code from the <a class="smoothscrollup" href="#dgbmobile">DigiByte Mobile</a> or any <a class="smoothscroll" href="#digidapps">Digi-ID supported app</a>.
                         </p> 
                     </div>
                
                     <div class="col-block step">
-                        <h3 class="item-title">Authentication.</h3>
+                        <h3 class="item-title">Authentication</h3>
                         <p>The user authenticates the request by entering their app PIN code or scanning their fingerprint/face.
                         </p> 
                     </div>
 					
 					<div class="col-block step">
-                        <h3 class="item-title">Confirmation.</h3>
+                        <h3 class="item-title">Confirmation</h3>
                         <p>Digi-ID sends the cryptographically-signed request back and the user is successfully logged in.
                         </p> 
                     </div>
@@ -1101,7 +973,7 @@
 		
 		  <div data-aos="fade">
 		
-		  <h1 class="align-center">Frequently Asked Questions.</h1>
+		  <h1 class="align-center">Frequently Asked Questions</h1>
 		
 		  <div class="row features block-1-2 block-m-1-2">
 			
@@ -1145,7 +1017,7 @@
 
             <div class="row">
                 <div class="col-full testimonials-header">
-                    <h2 class="display-2">See Digi-ID in action.</h2>
+                    <h2 class="display-2">See Digi-ID in action</h2>
 					<p class="lead">
                     Discover Digi-ID supported services to experience seamless authentication.
                     </p>
@@ -1243,7 +1115,7 @@
                     <i class="fas fa-sitemap"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">DigiByte Foundation.</h3>
+                    <h3 class="item-title">DigiByte Foundation</h3>
                     <p>The DigiByte Foundation is a volunteer managed organization that operates in a non-profit way. They protect and promote the true principles of decentralization and empower DigiByte and its community to establish and maintain a sustainable decentralized world.<br> <a href="https://digibytefoundation.io" target="_blank">Learn more</a> - <a href="https://digibytefoundation.io/product/donate-to-the-digibyte-foundation/" target="_blank">Donate</a> - <a href="mailto:info@digibytefoundation.io">Contact</a>.
                     </p>
                 </div>
@@ -1254,7 +1126,7 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">DigiByte Awareness Team.</h3>
+                    <h3 class="item-title">DigiByte Awareness Team</h3>
                     <p>DGBAT is a community-driven outreach initiative. They are led by a team, whose members in turn manage teams across social media, outreach, education, writers and developers. They aim to promote the DigiByte blockchain through education, outreach and marketing campaigns.<br> <a href="https://dgbat.org" target="_blank">Learn more</a> - <a href="https://dgbat.org/#donate" target="_blank">Donate</a> - <a href="mailto:info@dgbat.org">Contact</a>.
                     </p>
                 </div>
@@ -1265,12 +1137,12 @@
                     <i class="fas fa-code"></i>
                 </div>  
                 <div class="item-feature__text">
-                    <h3 class="item-title">DigiByte Developers.</h3>
+                    <h3 class="item-title">DigiByte Developers</h3>
                     <p>Everyone that is working on the DigiByte blockchain is an unpaid volunteer who devoted their time and skills to a project they believe in. Start contributing to the DGB development today or build your own app on top of the DigiByte blockchain.
 					<br />	
-					<a href="https://github.com/digibyte-core/digibyte-pipeline" target="_blank">DigiByte Pipeline on GitHub</a>.
+					<a href="https://github.com/digibyte-core/digibyte-pipeline" target="_blank">DigiByte Pipeline on GitHub</a>
 					<br />
-					<a href="https://github.com/digibyte-core/digibyte" target="_blank">DigiByte Core Protocol on GitHub</a>.
+					<a href="https://github.com/digibyte-core/digibyte" target="_blank">DigiByte Core Protocol on GitHub</a>
                     </p>
                 </div>
             </div>
@@ -1284,7 +1156,7 @@
                     <i class="fas fa-share-alt"></i>
                 </div>
 		    <div class="item-feature__text">
-                    <h3 class="item-title">Social media.</h3>
+                    <h3 class="item-title">Social media</h3>
                     <p>Follow DigiByte across all primary social media platforms to keep up with the latest DigiByte news and share the posts with your friends to help us make our voices heard all over the world.
                     </p>
 					<p class="item-feature__icon">
@@ -1304,7 +1176,7 @@
                     <i class="fab fa-telegram-plane"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Telegram groups.</h3>
+                    <h3 class="item-title">Telegram groups</h3>
                     <p><a href="https://telegram.org" target="_blank">Telegram</a> is the most popular and simple way to engage with the global DigiByte community. Please join the groups below which you are interested in or see the list of <a href="https://t.me/OfficialDigiByteGroups" target="_blank">all DigiByte groups</a>.
 					</p>
 					<p>
@@ -1329,7 +1201,7 @@
                     <i class="fab fa-wikipedia-w"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">The DigiByte Wiki.</h3>
+                    <h3 class="item-title">The DigiByte Wiki</h3>
                     <p>The <a href="https://www.dgbwiki.com" target="_blank">DigiByte Wiki</a> is an online encyclopedia built by the community, for the community. It contains useful and up to date data such as the <a href="https://www.dgbwiki.com/index.php?title=DigiByte#DigiByte_Ecosystem" target="_blank"> DigiByte Ecosystem</a> and <a href="https://www.dgbwiki.com/index.php?title=DigiByte#DigiByte_Guides" target="_blank">how to guides</a>. Anyone can positively contribute to the Wiki by creating a free user account and start adding or updating information on the DigiByte Wiki.<br><strong>Warning</strong> <i class="fas fa-exclamation-circle"></i> Avoid shameless self-promotion and referral links.</p>
 					<p class="jared">
 					<a class="telegramicon" href="https://www.dgbwiki.com/index.php?title=DigiByte#DigiByte_Technical_Specifications" target="_blank"><i class="fab fa-wikipedia-w"></i> Technical</a> 
@@ -1344,7 +1216,7 @@
                     <i class="fas fa-user-tie"></i>
                 </div>
                 <div class="item-feature__text">
-                    <h3 class="item-title">Meet the creator of DigiByte.</h3>
+                    <h3 class="item-title">Meet the creator of DigiByte</h3>
                     <p><a href="https://www.youtube.com/embed/S8eMsq8qp7Y?autoplay=1&loop=1&modestbranding=1&iv_load_policy=3&rel=0&showinfo=0" data-lity>Jared Tate</a> is the founder and creator of the DigiByte blockchain. Jared dedicated full-time development towards DigiByte since October 2013. He has been invited by <a href="https://www.youtube.com/embed/Wl0RUau9roE?autoplay=1&iv_load_policy=3&rel=0" data-lity>MIT</a>, <a href="https://twitter.com/digibytecoin/status/982696268928618496" target="_blank">Harvard</a> and the <a href="https://twitter.com/jaredctate/status/1217178454229225473" target="_blank">US Capitol</a> to speak on blockchain tech. He is also the co-author of the book <a href="https://blockchain2035.com" target="_blank">Blockchain 2035 The Digital DNA of Internet 3.0</a>, which is the first book written by a blockchain founder.
                     </p>
 					<p class="jared">
@@ -1370,7 +1242,7 @@
 	    
 	      <div class="row">
                 <div class="col-full testimonials-header">
-                    <h2 class="display-2">Contribute to the DigiByte community.</h2>
+                    <h2 class="display-2">Contribute to the DigiByte community</h2>
 					<p class="lead">
                     <a href="https://www.dgbwiki.com/index.php?title=Donate" target="_blank">Donate to DigiByte organizations</a> or use services below to support us.
                     </p>
@@ -1442,7 +1314,7 @@
 		
 		<div data-aos="fade">
 			
-		<h1 class="downtitle align-center">Apps developed by the DigiByte community.</h1>
+		<h1 class="downtitle align-center">Apps developed by the DigiByte community</h1>
 		
 		<div class="item-feature__text max830 align-center">
 		<p>DigiByte Core contains a full copy of the blockchain and builds the backbone of the network. However, it needs a lot of disk space, high memory usage and long sync time. If you are not an experienced user, you may want to use a simplified <a class="smoothscroll" href="#software">software wallet</a>.</p>
@@ -1523,7 +1395,7 @@
     ================================================== -->
 	    	<div class="lrmargin25" data-aos="fade"  id="docs">
 		
-			<h1 class="downtitle align-center"><i class="fas fa-books"></i> DigiByte Documents & Guides.</h1>
+			<h1 class="downtitle align-center"><i class="fas fa-books"></i> DigiByte Documents & Guides</h1>
 				
 			  <div class="item-feature__text max800 align-center">
                   <p>Looking for more documentation? Whether you need basic information for an article or technical information for an integration process. You can reach all the necessary guides below.
@@ -1608,11 +1480,11 @@
 	<!--- Downloads Third-Party
     ================================================== -->
 		<div class="lrmargin25" data-aos="fade" id="software">
-	<h1 class="downtitle align-center">Apps developed by a Third-Party service.</h1>
+	<h1 class="downtitle align-center">Apps developed by a Third-Party service</h1>
 			
 	<!--- Downloads Third-Party Software Wallets
     ================================================== -->
-        <h2 class="downtitle align-center"><i class="fas fa-laptop-code"></i> Software wallets.</h2>
+        <h2 class="downtitle align-center"><i class="fas fa-laptop-code"></i> Software wallets</h2>
 
 		<div class="row testimonials downslide">
 
@@ -1715,7 +1587,7 @@
     ================================================== -->
 		    <div class="lrmargin25 top30" data-aos="fade"  id="hardware">
 
-		    <h2 class="downtitle align-center"><i class="fas fa-microchip"></i> Hardware wallets.</h2>
+		    <h2 class="downtitle align-center"><i class="fas fa-microchip"></i> Hardware wallets</h2>
      
 		    <div class="row testimonials downslide">
 
@@ -1757,7 +1629,7 @@
 					<div class="testimonials__slide">
                         <img src="images/wallets/keepkey.png" loading="lazy" width="72" height="72" alt="KeepKey Wallet" class="testimonials__avatar">
                         
-                        <p>Works on Chrome and ShapeShift.com through USB.</p>
+                        <p>Works on Chrome and ShapeShift.com through USB</p>
 
                         <div class="testimonials__author">
                             <span class="testimonials__name">KeepKey</span>
@@ -1808,7 +1680,7 @@
     ================================================== -->
 		    <div class="lrmargin25 top30" data-aos="fade" id="cards">
 			
-			<h2 class="downtitle align-center"><i class="fas fa-credit-card"></i> Debit cards.</h2>
+			<h2 class="downtitle align-center"><i class="fas fa-credit-card"></i> Debit cards</h2>
      
 		    <div class="row testimonials downslide">
 
@@ -1867,7 +1739,7 @@
     ================================================== -->
 		    <div class="lrmargin25 top30" data-aos="fade" id="posapps">
 			
-			<h2 class="downtitle align-center"><i class="fas fa-shopping-cart"></i> Point of sale apps.</h2>
+			<h2 class="downtitle align-center"><i class="fas fa-shopping-cart"></i> Point of sale apps</h2>
      
 		    <div class="row testimonials downslide">
 
@@ -1926,7 +1798,7 @@
     ================================================== -->
 		    <div class="lrmargin25 top30" data-aos="fade" id="digidapps">
 		
-			<h2 class="downtitle align-center"><i class="fas fa-fingerprint"></i> Digi-ID apps.</h2>
+			<h2 class="downtitle align-center"><i class="fas fa-fingerprint"></i> Digi-ID apps</h2>
      
 		    <div class="row testimonials downslide">
 
@@ -2043,7 +1915,7 @@
 
             <div class="footer__about col-five tab-full left">
 
-                <h4>About DigiByte.</h4>
+                <h4>About DigiByte</h4>
 
                 <p>
                 DigiByte is a rapidly growing open-source blockchain created in late 2013 and released in early 2014. After 7 years of forward thinking development, DigiByte has become one of the safest, fastest, longest and most decentralized UTXO blockchain in existence.<br>
@@ -2066,7 +1938,7 @@
                 <div class="row">
 
                     <div class="footer__site-links col-six mob-full">
-                        <h4>DigiByte links.</h4>
+                        <h4>DigiByte links</h4>
 
                         <ul class="footer__site-links">
                             <li><a href="https://digibytefoundation.io" target="_blank">DigiByte Foundation</a></li>
@@ -2080,7 +1952,7 @@
                     </div>
 
                     <div class="footer__contact col-six mob-full">
-                        <h4>Resources.</h4>
+                        <h4>Resources</h4>
 
                         <ul class="footer__site-links">
                             <li><a href="docs/integrationguide.pdf" target="_blank">DGB Integration Guide</a></li>
@@ -2113,12 +1985,14 @@
     </footer>
 
 
-    <!-- Java Script
+    <!-- Scripts
     ================================================== -->
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/plugins1b.js"></script>
     <script src="js/main2o.js"></script>
-	
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
 	<!-- Cookie info message
     ================================================== -->
 	<script type="text/javascript" id="cookieinfo" src="js/cookieinfo.min.js"
